@@ -1,0 +1,25 @@
+.product.data.items {
+    @include bryant-park-lib-data-accordion();
+    margin-bottom: $indent__base;
+    border: $tab-control__border-width solid $tab-control__border-color;
+    border-top: none;
+
+    > .item.title > .switch > span {
+        @include lib-visually-hidden-reset();
+    }
+
+    .data.item {
+        display: block;
+        position: relative;
+
+        .counter {
+            &::before {
+                content: '(';
+            }
+    
+            &::after {
+                content: ')';
+            }
+        }
+    }
+}

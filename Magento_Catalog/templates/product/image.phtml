@@ -1,0 +1,8 @@
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+
+<img class="photo image <?= $block->escapeHtmlAttr($block->getClass()) ?> lazyload ls-animate"
+    <?= $block->escapeHtml($block->getCustomAttributes()) ?>
+    data-src="<?= $block->escapeUrl($block->getImageUrl()) ?>"
+    width="<?= $block->escapeHtmlAttr($block->getWidth()) ?>"
+    height="<?= $block->escapeHtmlAttr($block->getHeight()) ?>"
+    alt="<?= /* @noEscape */ $block->stripTags($block->getLabel(), null, true) ?>" />

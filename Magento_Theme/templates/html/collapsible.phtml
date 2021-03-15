@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<?php $navID = md5(uniqid('nav_', true)) ?>
+<nav class="block <?= $block->escapeHtmlAttr($block->getBlockCss()) ?>">
+    <h2 class="heading">
+        <button type="button" class="title <?= $block->escapeHtmlAttr($block->getBlockCss()) ?>-title" aria-controls="<?= $navID ?>">
+            <?= $block->escapeHtml(__($block->getBlockTitle())) ?>
+        </button>
+    </h2>
+    <div id="<?= $navID ?>" class="content <?= /* @escapeNotVerified */ $block->getBlockCss() ?>-content" id="<?= /* @escapeNotVerified */ $block->getBlockCss() ?>" hidden>
+        <?= $block->getChildHtml(); ?>
+    </div>
+</nav>

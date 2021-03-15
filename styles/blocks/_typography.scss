@@ -1,0 +1,187 @@
+/*doc
+---
+title: Typography
+name: Typography
+category: Style-Guide - Typography
+---
+
+###Body Text
+```html_example
+  <p>I am a paragraph and sometimes I have <a href="#">links inside</a>. Let me know what you think about my style and any and all feedback is greatly appreciated like this amazing run-on setence that I am making you read at this very moment.</p>
+  <p>I am a paragraph and sometimes I have <a href="#">links inside</a>. Let me know what you think about my style and any and all feedback is greatly appreciated like this amazing run-on setence that I am making you read at this very moment.</p>
+```
+
+##Headings
+
+```html_example
+  <h1>This is an H1</h1>
+  <h2>This is an H2</h2>
+  <h3>This is an H3</h3>
+  <h4>This is an H4</h4>
+  <h5>This is an H5</h5>
+  <h6>This is an H6</h6>
+```
+#### H2
+
+```html_example
+  <h2> I am a Heading 2 </h2>
+```
+#### H3
+
+```html_example
+  <h3> I am a Heading 3 </h3>
+```
+#### H4
+
+```html_example
+  <h4> I am a Heading 4 </h4>
+```
+#### H5
+
+```html_example
+  <h5> I am a Heading 5 </h5>
+```
+
+#### H6
+
+```html_example
+  <h6> I am a Heading 6 </h6>
+```
+
+*/
+
+/*doc
+---
+title: Typography
+name: Typography
+category: Style-Guide - Typography
+---
+
+###Body Text
+```html_example
+  <p>I am a paragraph and sometimes I have <a href="#">links inside</a>. Let me know what you think about my style and any and all feedback is greatly appreciated like this amazing run-on setence that I am making you read at this very moment.</p>
+```
+
+##Headings
+
+```html_example
+  <h1>This is an H1</h1>
+  <h1 class="pdp-h1">This is a PDP H1</h1>
+  <h2>This is an H2</h2>
+  <h3>This is an H3</h3>
+  <h4>This is an H4</h4>
+  <h5>This is an H5</h5>
+```
+#### H1
+
+```html_example
+  <h1> I am a Heading 1 </h1>
+```
+
+#### PDP H1
+
+```html_example
+  <h1 class="pdp-h1"> I am a PDP Heading 1 </h1>
+```
+
+#### H2
+
+```html_example
+  <h2> I am a Heading 2 </h2>
+```
+
+#### H3
+
+```html_example
+  <h3> I am a Heading 3 </h3>
+```
+#### H4
+
+```html_example
+  <h4> I am a Heading 4 </h4>
+```
+#### H5
+
+```html_example
+  <h5> I am a Heading 5 </h5>
+```
+
+*/
+
+// Pagebuilder requires you to set a font-size and letter-spacing, but if you want to
+// preselect a heading type, this will make the styling always apply properly
+
+.pagebuilder-collage-content,
+.pagebuilder-poster-content {
+    p,
+    p span {
+        font-size: $font-size__base !important; // override PageBuilder
+        line-height: $line-height__base !important; // override PageBuilder
+        letter-spacing: $letter-spacing__base !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: $font-size__base--desktop !important; // override PageBuilder
+            letter-spacing: $letter-spacing__base--desktop !important; // override PageBuilder
+        }
+    }
+
+    h1,
+    h1 span {
+        font-size: headings($heading-h1, font-size) !important; // override PageBuilder
+        letter-spacing: headings($heading-h1, letter-spacing) !important; // override PageBuilder
+        font-weight: headings($heading-h1, font-weight) !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: headings($heading-h1, font-size-desktop) !important; // override PageBuilder
+            letter-spacing: headings($heading-h1, letter-spacing-desktop) !important; // override PageBuilder
+        }
+    }
+
+    h2,
+    h2 span {
+        font-size: headings($heading-h2, font-size) !important; // override PageBuilder
+        letter-spacing: headings($heading-h2, letter-spacing) !important; // override PageBuilder
+        font-weight: headings($heading-h2, font-weight) !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: headings($heading-h2, font-size-desktop) !important; // override PageBuilder
+            letter-spacing: headings($heading-h2, letter-spacing-desktop) !important; // override PageBuilder
+        }
+    }
+
+    h3,
+    h3 span {
+        font-size: headings($heading-h3, font-size) !important; // override PageBuilder
+        letter-spacing: headings($heading-h3, letter-spacing) !important; // override PageBuilder
+        font-weight: headings($heading-h3, font-weight) !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: headings($heading-h3, font-size-desktop) !important; // override PageBuilder
+            letter-spacing: headings($heading-h3, letter-spacing-desktop) !important; // override PageBuilder
+        }
+    }
+
+    h4,
+    h4 span {
+        font-size: headings($heading-h4, font-size) !important; // override PageBuilder
+        letter-spacing: headings($heading-h4, letter-spacing) !important; // override PageBuilder
+        font-weight: headings($heading-h4, font-weight) !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: headings($heading-h4, font-size-desktop) !important; // override PageBuilder
+            letter-spacing: headings($heading-h4, letter-spacing-desktop) !important; // override PageBuilder
+        }
+    }
+
+    h5,
+    h5 span {
+        font-size: headings($heading-h5, font-size) !important; // override PageBuilder
+        letter-spacing: headings($heading-h5, letter-spacing) !important; // override PageBuilder
+        font-weight: headings($heading-h5, font-weight) !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            font-size: headings($heading-h5, font-size-desktop) !important; // override PageBuilder
+            letter-spacing: headings($heading-h5, letter-spacing-desktop) !important; // override PageBuilder
+        }
+    }
+}

@@ -1,0 +1,531 @@
+// Mercury Homepage
+
+.cms-home .column.main {
+    width: 100%;
+
+    button {
+        text-align: center;
+
+        @include max-screen($screen__m) {
+            max-width: 150px;
+        }
+    }
+
+    .pagebuilder-banner-button,
+    .pagebuilder-button-secondary {
+        text-transform: $button__text-transform;
+    }
+
+    .pagebuilder-wrapper:not(.fullbleed) .pagebuilder-banner-wrapper,
+    [data-content-type="video"] {
+        @include max-screen($screen__m) {
+            margin-left: -$layout__width-xs-indent !important; // override PageBuilder
+            margin-right: -$layout__width-xs-indent !important; // override PageBuilder
+
+            .pagebuilder-collage-content {
+                padding-bottom: $indent__s;
+                padding-left: $indent__s;
+            }
+        }
+    }
+}
+
+/*
+    This is for the top banner
+     - Makes the text area wider to reduce wrapping
+     - Hides the banner text on mobile
+*/
+.homepage-hero {
+    .pagebuilder-overlay {
+        display: none;
+        width: 100%;
+
+        @include min-screen($screen__m) {
+            display: block;
+            max-width: 750px !important; // override PageBuilder
+        }
+
+        span {
+            display: block;
+            margin-bottom: $indent__s;
+        }
+    }
+
+    .layout_wrapper {
+        @include min-screen($screen__xl) {
+            margin-left: 50px !important; // override PageBuilder
+        }
+    }
+
+    .pagebuilder-banner-wrapper {
+        min-height: 300px !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            min-height: 600px !important; // override PageBuilder
+        }
+    }
+}
+
+/*
+    This will always be the row immediately after the banner.
+    We hide the banner text in .homepage-hero and instead show
+    this new block that (presumably) has the same text as the desktop banner
+
+    - Modifies the text color and size so that it's always visible on a white background
+    - Makes the button, which is really a PageBuilder span, full-width
+*/
+.homepage-hero-text.mobile-only {
+    @include min-screen($screen__m) {
+        display: none !important; // override PageBuilder
+    }
+
+    h2,
+    span:not([data-element="link_text"]),
+    p {
+        color: $text__color !important; // override PageBuilder
+    }
+
+    h2 {
+        margin-bottom: 0;
+    }
+
+    [data-content-type="text"] h2 {
+        margin-top: 0;
+    }
+
+    [data-content-type="button-item"] {
+        width: 100%;
+    }
+}
+
+/*
+    This is for products sliders that use the product slider block
+     - Slightly adjusts the margins
+     - Hides product details like size/color options and reviews
+     - Styles the slick dots on mobile and hides them on desktop
+*/
+.homepage-products-slider {
+    margin: 50px auto;
+    width: 100%;
+
+    .product-image-container {
+        width: 100% !important; // override Slick
+
+        @include min-screen($screen__m) {
+            max-width: 200px;
+        }
+    }
+
+    .product-item-inner,
+    .product-item-details div:not(.price-box) {
+        display: none;
+    }
+
+    .slick-arrow {
+        background-color: transparent !important; // override Slick
+        top: 40%;
+
+        &::before {
+            font-size: 30px;
+        }
+
+        &.slick-next {
+            right: 0;
+
+            @include min-screen($screen__m) {
+                right: -$indent__s;
+            }
+        }
+
+        &.slick-prev {
+            left: $indent__s;
+
+            @include min-screen($screen__m) {
+                left: -$indent__s;
+            }
+        }
+    }
+
+    .slick-dots {
+        bottom: -$indent__xl;
+
+        @include min-screen($screen__m) {
+            display: none !important; // override Slick
+        }
+
+        li,
+        button {
+            width: 9px;
+            height: 9px;
+            margin: 0 $indent__xs;
+        }
+
+        li button {
+            background-color: $secondary__color;
+            border: none;
+
+            @include hover {
+                background-color: $primary__color;
+                border: none;
+            }
+        }
+
+        li.slick-active button {
+            background-color: $primary__color;
+        }
+    }
+
+    .product-item-info .product-item-details {
+        text-align: center;
+    }
+}
+
+/*
+    This is for the row with 2 uneven touts (2/3 and 1/3)
+     - Sets a height for the touts on mobile. The desktop height is set from the admin
+     - Makes the images full-width
+*/
+.homepage-uneven-tout-row {
+    margin-bottom: $indent__s;
+
+    .pagebuilder-column-group {
+        flex-direction: column !important; // override PageBuilder
+
+        @include min-screen($screen__l) {
+            margin-bottom: 50px;
+            flex-direction: row !important; // override PageBuilder override
+        }
+    }
+
+    .pagebuilder-video-container {
+        @include min-screen($screen__l) {
+            padding-top: 0 !important; // override PageBuilder
+            min-height: 500px !important; // override PageBuilder
+        }
+    }
+
+    .pagebuilder-column {
+        @include max-screen($screen__l) {
+            width: 100% !important; // override PageBuilder
+        }
+
+        &:first-of-type {
+            margin-top: 50px;
+
+            @include min-screen($screen__l) {
+                margin-top: 0;
+                margin-right: $indent__s;
+            }
+
+            .pagebuilder-overlay {
+                min-height: 250px !important; // override PageBuilder
+
+                @include min-screen($screen__l) {
+                    min-height: 500px !important; // override PageBuilder
+                }
+            }
+        }
+
+        &:last-of-type {
+            margin-top: $indent__s;
+
+            @include min-screen($screen__l) {
+                margin-top: 0;
+                margin-left: $indent__s;
+            }
+
+            .pagebuilder-banner-wrapper {
+                @include max-screen($screen__l) {
+                    min-height: 500px !important; // override PageBuilder
+                }
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+/*
+    This is for the 2 tout row with evenly-sized columns
+     - Adjusts the margins on desktop
+     - Sets a height for the touts on mobile. The desktop height is set from the admin
+*/
+.double-tout-row {
+    .pagebuilder-column:first-of-type {
+        margin-bottom: $indent__s;
+    }
+
+    .pagebuilder-banner-wrapper {
+        @include max-screen($screen__m) {
+            min-height: 500px !important; // override PageBuilder
+        }
+    }
+
+    @include min-screen($screen__m) {
+        .pagebuilder-column {
+            &:first-of-type {
+                margin-right: $indent__s;
+                margin-bottom: 0;
+            }
+
+            &:last-of-type {
+                margin-left: $indent__s;
+            }
+        }
+    }
+}
+
+/*
+    This is for the fullbleed banner with the overflowing overlay
+     - Sets the positioning of the overlay on mobile
+     - Sets a minimum height for the banner on mobile
+     - Adjusts margins
+*/
+.homepage-overflowing-banner {
+    position: relative;
+    margin-top: $indent__s;
+    margin-bottom: 350px;
+
+    @include min-screen($screen__m) {
+        margin-top: 70px;
+        margin-bottom: 110px;
+    }
+
+    .pagebuilder-banner-wrapper {
+        min-height: 280px !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            min-height: 500px !important; // override PageBuilder
+        }
+    }
+
+    .pagebuilder-overlay {
+        max-width: 290px !important; // override PageBuilder
+        box-sizing: border-box;
+        width: 100%;
+        bottom: -300px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        padding: 50px $indent__m;
+
+        @include min-screen($screen__m) {
+            transform: none;
+            max-width: 400px !important; // override PageBuilder
+            bottom: -60px;
+            padding: 50px;
+        }
+
+        span {
+            line-height: 1.5;
+
+            &:first-of-type {
+                display: block;
+                margin-bottom: $indent__base;
+            }
+        }
+
+        button.pagebuilder-banner-button {
+            width: 100%;
+            max-width: none;
+
+            @include min-screen($screen__m) {
+                max-width: 200px;
+            }
+        }
+    }
+}
+
+/*
+    This is for the row with 3 evenly-sized touts
+     - Sets minimum heights for the banners
+     - Drops the banner text beneath the banner on mobile
+     - Adds an arrow (->) to the links
+     - Forces the text and link coloring on mobile so that they are always visible
+*/
+.homepage-triple-tout-row {
+    margin-top: 100px;
+
+    @include min-screen($screen__m) {
+        margin-top: 0;
+    }
+
+    .pagebuilder-wrapper .pagebuilder-banner-wrapper {
+        margin-left: 0 !important; // override PageBuilder
+        margin-right: 0 !important; // override PageBuilder
+    }
+
+    .pagebuilder-overlay {
+        min-height: 300px !important; // override PageBuilder
+
+        @include min-screen($screen__m) {
+            min-height: 600px !important; // override PageBuilder
+        }
+    }
+
+    .pagebuilder-column {
+        position: relative;
+        margin-bottom: 175px;
+
+        @include min-screen($screen__m) {
+            margin-bottom: 75px;
+        }
+
+        .pagebuilder-poster-content {
+            position: absolute;
+            bottom: -155px;
+
+            @include min-screen($screen__m) {
+                bottom: unset;
+            }
+
+            [data-element="content"] {
+                padding: 0 $indent__s;
+            }
+
+            p,
+            span {
+                @include max-screen($screen__m) {
+                    color: $text__color !important; // override PageBuilder
+                }
+            }
+
+            button.pagebuilder-banner-button {
+                max-width: none !important; // override PageBuilder
+                margin-top: 0;
+                padding-top: 0;
+                color: $button-tertiary__color;
+                text-decoration: $button-tertiary__text-decoration;
+
+                @include icon-svg(
+                    $icon : arrow-next,
+                    $width : 28px,
+                    $pseudo : after,
+                    $fill : $button-tertiary__color
+                );
+
+                @include hover {
+                    color: $button-tertiary__hover__color !important; // override PageBuilder override
+
+                    @include icon-svg(
+                        $icon : arrow-next,
+                        $width : 28px,
+                        $pseudo : after,
+                        $fill : $button-tertiary__hover__color
+                    );
+                }
+
+                &::after {
+                    transform: rotate(90deg) translateX(-2px);
+                }
+            }
+        }
+    }
+
+    .pagebuilder-column:not(:last-of-type) {
+        @include min-screen($screen__m) {
+            margin-right: 15px;
+        }
+    }
+}
+
+/*
+    This is for the non-product sliders. It's a WIP because the slide sizing
+    will be handled with JS rather than SCSS `vw`.
+     - Shortens the slick slider
+     - Brings the title and button closer to the slider on mobile
+     - Ensures that the images display as background-size: auto
+     - Hides the slider dots on desktop
+*/
+.homepage-image-slider {
+    margin-top: $indent__xl;
+
+    [data-content-type="buttons"] {
+        transform: translateY(-430px);
+
+        @include min-screen($screen__m) {
+            transform: translateY(-150px);
+        }
+    }
+
+    .pagebuilder-slider {
+        transform: translateY(-180px);
+
+        @include min-screen($screen__m) {
+            transform: translateY(-70px);
+        }
+
+        .pagebuilder-slide-wrapper {
+            background-size: auto !important; // override PageBuilder/slick
+            background-position: center bottom !important; // override PageBuilder/slick
+            transform: translateX(-$indent__xl);
+
+            @include min-screen($screen__m) {
+                background-position: center center !important; // override PageBuilder override
+                transform: none;
+            }
+        }
+
+        .slick-slide {
+            width: calc(100vw - 15px) !important; // override PageBuilder/slick
+
+            @include min-screen($screen__m) {
+                // (window width - padding) * desired width - slide margin
+                width: calc(50vw - #{$indent__base}) !important // override PageBuilder/slick
+            }
+
+            @include min-screen($screen__l) {
+                width: calc(20vw - #{$indent__base}) !important; // override PageBuilder/slick
+            }
+
+            .pagebuilder-slide-wrapper [data-element="content"] {
+                display: none;
+            }
+
+            .pagebuilder-poster-overlay {
+                align-items: flex-start !important; // override PageBuilder
+                min-height: 250px !important; // override PageBuilder
+                padding-top: $indent__s !important; // override PageBuilder
+
+                @include min-screen($screen__m) {
+                    padding-top: $indent__xl !important; // override PageBuilder
+                }
+
+                .pagebuilder-poster-content {
+                    padding: $indent__base;
+                    min-height: 150px !important; // override PageBuilder
+
+                    @include min-screen($screen__m) {
+                        min-height: 200px !important; // override PageBuilder
+                    }
+                }
+            }
+        }
+
+        .slick-arrow {
+            top: 45%;
+        }
+
+        .slick-prev {
+            left: -15px;
+        }
+
+        .slick-next {
+            right: -15px;
+        }
+
+        .slick-dots {
+            bottom: $indent__l;
+
+            @include min-screen($screen__m) {
+                bottom: -$indent__s;
+            }
+
+            @include min-screen($screen__l) {
+                display: none !important; // override Slick JS
+            }
+        }
+    }
+}
